@@ -36,15 +36,15 @@ extension Phase {
         get {
             switch self {
             case .warmUp:
-                return Color(UIColor.systemBackground)
+                return Color(UIColor(named: "WarmUpColor")!)
             case .low:
-                return Color(UIColor.systemRed)
+                return Color(UIColor(named: "LowIntensityColor")!)
             case .high:
-                return Color(UIColor.systemGreen)
+                return Color(UIColor(named: "HighIntensityColor")!)
             case .rest:
-                return Color(UIColor.systemYellow)
+                return Color(UIColor(named: "RestColor")!)
             case .cooldown:
-                return Color(UIColor.systemBlue)
+                return Color(UIColor(named: "CooldownColor")!)
             }
         }
     }
