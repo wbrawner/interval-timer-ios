@@ -6,6 +6,7 @@
 //  Copyright © 2020 William Brawner. All rights reserved.
 //
 
+import AudioToolbox
 import Combine
 import CoreData
 import Foundation
@@ -15,6 +16,7 @@ class TimerDataStore: ObservableObject {
     private var persistentContainer: NSPersistentContainer
     private let internalTimer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     private var timerCancellable: AnyCancellable? = nil
+    private var sounds: [Phase:SystemSoundID] = [:]
     
     @Published var activeTimer: ActiveTimerState? = nil {
         didSet {
@@ -59,6 +61,7 @@ class TimerDataStore: ObservableObject {
             } else if state.currentSet == state.timer.sets && state.currentRound < state.timer.rounds {
                 self.activeTimer = state.copy(
                     timeRemaining: state.timer.restDuration,
+                    currentRound: state.timer.rounds + 1,
                     phase: .rest
                 )
             } else {
@@ -83,6 +86,11 @@ class TimerDataStore: ObservableObject {
                 timeRemaining: state.timer.highIntensityDuration,
                 phase: .high
             )
+        }
+        if let newState = self.activeTimer {
+            if newState.isRunning {
+                AudioServicesPlaySystemSound(sounds[newState.phase]!)
+            }
         }
     }
     
@@ -163,6 +171,11 @@ class TimerDataStore: ObservableObject {
             self.timerCancellable = nil
             UIApplication.shared.isIdleTimerDisabled = false
         }
+        if let newState = self.activeTimer {
+            if newState.isRunning {
+                AudioServicesPlaySystemSound(sounds[newState.phase]!)
+            }
+        }
     }
     
     func loadTimers() {
@@ -216,6 +229,14 @@ class TimerDataStore: ObservableObject {
         try! viewContext.save()
         loadTimers()
     }
+    
+    private func loadSound(_ phase: Phase) {
+        let filePath = Bundle.main.path(forResource: phase.rawValue, ofType: "mp3")
+        let url = NSURL(fileURLWithPath: filePath!)
+        var soundId: SystemSoundID = 0
+        AudioServicesCreateSystemSoundID(url, &soundId)
+        sounds[phase] = soundId
+    }
 
     init(_ completionClosure: @escaping () -> ()) {
         persistentContainer = NSPersistentContainer(name: "IntervalTimer")
@@ -226,6 +247,11 @@ class TimerDataStore: ObservableObject {
             self.loadTimers()
             completionClosure()
         }
+        loadSound(.warmUp)
+        loadSound(.low)
+        loadSound(.high)
+        loadSound(.rest)
+        loadSound(.cooldown)
     }
 }
 

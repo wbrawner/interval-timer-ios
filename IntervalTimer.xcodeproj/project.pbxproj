@@ -12,6 +12,11 @@
 		80465F862544774700710741 /* CollapsibleFormRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80465F852544774700710741 /* CollapsibleFormRowView.swift */; };
 		80465F8825447ACE00710741 /* DurationPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80465F8725447ACE00710741 /* DurationPicker.swift */; };
 		80465F8A2547A74700710741 /* ActiveTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80465F892547A74700710741 /* ActiveTimerView.swift */; };
+		80E0FEE2254F425200A67912 /* Rest.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 80E0FEDD254F425100A67912 /* Rest.mp3 */; };
+		80E0FEE3254F425200A67912 /* Warm-Up.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 80E0FEDE254F425100A67912 /* Warm-Up.mp3 */; };
+		80E0FEE4254F425200A67912 /* High Intensity.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 80E0FEDF254F425100A67912 /* High Intensity.mp3 */; };
+		80E0FEE5254F425200A67912 /* Low Intensity.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 80E0FEE0254F425100A67912 /* Low Intensity.mp3 */; };
+		80E0FEE6254F425200A67912 /* Cooldown.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 80E0FEE1254F425100A67912 /* Cooldown.mp3 */; };
 		80F8B6F5254276380024077E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F8B6F4254276380024077E /* AppDelegate.swift */; };
 		80F8B6F7254276380024077E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F8B6F6254276380024077E /* SceneDelegate.swift */; };
 		80F8B6FA254276380024077E /* IntervalTimer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 80F8B6F8254276380024077E /* IntervalTimer.xcdatamodeld */; };
@@ -48,6 +53,11 @@
 		80465F852544774700710741 /* CollapsibleFormRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsibleFormRowView.swift; sourceTree = "<group>"; };
 		80465F8725447ACE00710741 /* DurationPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationPicker.swift; sourceTree = "<group>"; };
 		80465F892547A74700710741 /* ActiveTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveTimerView.swift; sourceTree = "<group>"; };
+		80E0FEDD254F425100A67912 /* Rest.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Rest.mp3; sourceTree = "<group>"; };
+		80E0FEDE254F425100A67912 /* Warm-Up.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Warm-Up.mp3"; sourceTree = "<group>"; };
+		80E0FEDF254F425100A67912 /* High Intensity.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "High Intensity.mp3"; sourceTree = "<group>"; };
+		80E0FEE0254F425100A67912 /* Low Intensity.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Low Intensity.mp3"; sourceTree = "<group>"; };
+		80E0FEE1254F425100A67912 /* Cooldown.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Cooldown.mp3; sourceTree = "<group>"; };
 		80F8B6F1254276380024077E /* IntervalTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IntervalTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80F8B6F4254276380024077E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80F8B6F6254276380024077E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +102,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		80E0FEDC254F425100A67912 /* audio */ = {
+			isa = PBXGroup;
+			children = (
+				80E0FEDD254F425100A67912 /* Rest.mp3 */,
+				80E0FEDE254F425100A67912 /* Warm-Up.mp3 */,
+				80E0FEDF254F425100A67912 /* High Intensity.mp3 */,
+				80E0FEE0254F425100A67912 /* Low Intensity.mp3 */,
+				80E0FEE1254F425100A67912 /* Cooldown.mp3 */,
+			);
+			path = audio;
+			sourceTree = "<group>";
+		};
 		80F8B6E8254276380024077E = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +137,7 @@
 		80F8B6F3254276380024077E /* IntervalTimer */ = {
 			isa = PBXGroup;
 			children = (
+				80E0FEDC254F425100A67912 /* audio */,
 				80F8B6F4254276380024077E /* AppDelegate.swift */,
 				80F8B6F6254276380024077E /* SceneDelegate.swift */,
 				80F8B6FB254276380024077E /* TimerListView.swift */,
@@ -264,6 +287,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80E0FEE5254F425200A67912 /* Low Intensity.mp3 in Resources */,
+				80E0FEE2254F425200A67912 /* Rest.mp3 in Resources */,
+				80E0FEE3254F425200A67912 /* Warm-Up.mp3 in Resources */,
+				80E0FEE6254F425200A67912 /* Cooldown.mp3 in Resources */,
+				80E0FEE4254F425200A67912 /* High Intensity.mp3 in Resources */,
 				80F8B7042542763A0024077E /* LaunchScreen.storyboard in Resources */,
 				80F8B7012542763A0024077E /* Preview Assets.xcassets in Resources */,
 				80F8B6FE2542763A0024077E /* Assets.xcassets in Resources */,
