@@ -110,7 +110,7 @@ class TimerDataStore: ObservableObject {
         UIApplication.shared.isIdleTimerDisabled = self.activeTimer?.isRunning ?? false
     }
     
-    func updateTimer() {
+    private func updateTimer() {
         guard let state = self.activeTimer else {
             return
         }
@@ -223,7 +223,8 @@ class TimerDataStore: ObservableObject {
         loadTimers()
     }
 
-    func deleteTimer(_ timer: IntervalTimer) {
+    func deleteTimer(at: IndexSet) {
+        let timer = try!  self.timers.get()[at.first!]
         let viewContext = persistentContainer.viewContext
         viewContext.delete(timer)
         try! viewContext.save()
