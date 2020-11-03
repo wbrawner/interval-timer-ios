@@ -58,10 +58,6 @@ struct TimerListView: View {
                         self.dataStore.deleteTimer(at: index)
                     }
                 }
-                .navigationBarItems(
-                    trailing: Button(action: {
-                    self.isEditing = true
-                }, label: { Image(systemName: "plus").padding() } ))
                 .toAnyView()
             }
         default:
@@ -73,6 +69,10 @@ struct TimerListView: View {
         NavigationView {
             stateContent
                 .navigationBarTitle("Timers")
+                .navigationBarItems(
+                    trailing: Button(action: {
+                    self.isEditing = true
+                }, label: { Image(systemName: "plus").padding() } ))
         }
         .sheet(isPresented: $isEditing,
                onDismiss: { self.isEditing = false },
