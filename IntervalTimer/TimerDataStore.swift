@@ -40,6 +40,9 @@ class TimerDataStore: ObservableObject {
     
     func closeTimer() {
         self.activeTimer = nil
+        self.timerCancellable?.cancel()
+        self.timerCancellable = nil
+        UIApplication.shared.isIdleTimerDisabled = false
     }
     
     func goBack() {
