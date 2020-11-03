@@ -22,6 +22,7 @@ struct CollapsibleFormRowView: View {
                 withAnimation {
                     self.buttonAction()
                 }
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
             }, label: {
                 HStack {
                     Text(rowTitle)
