@@ -210,7 +210,20 @@ class TimerDataStore: ObservableObject {
         sets: Int64,
         rounds: Int64
     ) {
-        let timer = IntervalTimer.init(entity: NSEntityDescription.entity(forEntityName: "IntervalTimer", in: persistentContainer.viewContext)!, insertInto: persistentContainer.viewContext) as IntervalTimer
+        var timer: IntervalTimer
+        if let uuid = id {
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "IntervalTimer")
+            fetchRequest.predicate = NSPredicate(format: "id = %@", uuid.uuidString)
+            let result = try! persistentContainer.viewContext.fetch(fetchRequest) as! [IntervalTimer]
+            if result.count == 1 {
+                timer = result[0]
+            } else {
+                timer = IntervalTimer.init(entity: NSEntityDescription.entity(forEntityName: "IntervalTimer", in: persistentContainer.viewContext)!, insertInto: persistentContainer.viewContext) as IntervalTimer
+            }
+        } else {
+            timer = IntervalTimer.init(entity: NSEntityDescription.entity(forEntityName: "IntervalTimer", in: persistentContainer.viewContext)!, insertInto: persistentContainer.viewContext) as IntervalTimer
+        }
+        
         timer.id = id ?? UUID()
         timer.name = name
         timer.userDescription = description
@@ -222,9 +235,16 @@ class TimerDataStore: ObservableObject {
         timer.sets = sets
         timer.rounds = rounds
         let viewContext = persistentContainer.viewContext
-        viewContext.insert(timer)
+        if id == nil {
+            viewContext.insert(timer)
+        }
         try! viewContext.save()
         loadTimers()
+        if let currentState = activeTimer {
+            if currentState.timer.id == timer.id {
+                activeTimer = currentState.copy(timer: timer)
+            }
+        }
     }
 
     func deleteTimer(at: IndexSet) {
@@ -249,6 +269,7 @@ class TimerDataStore: ObservableObject {
             if let error = error {
                 fatalError("Failed to load Core Data stack: \(error)")
             }
+            self.persistentContainer.viewContext.mergePolicy = NSOverwriteMergePolicy
             self.loadTimers()
             completionClosure()
         }

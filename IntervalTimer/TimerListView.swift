@@ -22,14 +22,7 @@ struct TimerListView: View {
                 return List {
                     ForEach(timers) { timer in
                         NavigationLink(
-                            destination: ActiveTimerView()
-                                .navigationBarBackButtonHidden(true)
-                                .navigationBarItems(leading: Button(action: {
-                                    // TODO: Confirm before exiting if the timer isn't complete
-                                    self.dataStore.closeTimer()
-                                }, label: { Image(systemName: "xmark") })
-                                .foregroundColor(.primary)
-                                ),
+                            destination: ActiveTimerView(),
                             isActive: .constant(self.dataStore.hasActiveTimer)
                         ) {
                             HStack {
@@ -58,6 +51,7 @@ struct TimerListView: View {
                         self.dataStore.deleteTimer(at: index)
                     }
                 }
+                .listStyle(InsetGroupedListStyle())
                 .toAnyView()
             }
         default:

@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ActiveTimerView: View {
     @EnvironmentObject var dataStore: TimerDataStore
+    @State var isEditing: Bool = false
     
     var body: some View {
         if let state = dataStore.activeTimer {
@@ -31,9 +32,30 @@ struct ActiveTimerView: View {
                 }
             }
             .navigationBarTitle("\(state.timer.name)", displayMode: .inline)
+            
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(
+                leading: Button(action: {
+                    // TODO: Confirm before exiting if the timer isn't complete
+                    self.dataStore.closeTimer()
+                }, label: {
+                    Image(systemName: "xmark")
+                }).foregroundColor(.primary),
+                trailing: Button(
+                    action: {
+                        self.isEditing = true
+                    },
+                    label: {
+                        Text("Edit")
+                    }
+                )
+            )
             .background(state.backgroundColor)
             .edgesIgnoringSafeArea(.vertical)
             .animation(.default)
+            .sheet(isPresented: $isEditing,
+                   onDismiss: { self.isEditing = false },
+                   content: { TimerFormView(state.timer)})
         }
     }
 }
