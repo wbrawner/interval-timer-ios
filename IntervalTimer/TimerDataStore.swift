@@ -64,7 +64,7 @@ class TimerDataStore: ObservableObject {
             } else if state.currentSet == state.timer.sets && state.currentRound < state.timer.rounds {
                 self.activeTimer = state.copy(
                     timeRemaining: state.timer.restDuration,
-                    currentRound: state.timer.rounds + 1,
+                    currentSet: 1,
                     phase: .rest
                 )
             } else {
@@ -82,6 +82,7 @@ class TimerDataStore: ObservableObject {
         case .rest:
             self.activeTimer = state.copy(
                 timeRemaining: state.timer.highIntensityDuration,
+                currentRound: state.currentRound + 1,
                 phase: .high
             )
         case .cooldown:
