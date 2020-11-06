@@ -127,7 +127,25 @@ struct LabeledCounter: View {
 }
 
 struct ActiveTimerView_Previews: PreviewProvider {
+    static var dataStore: TimerDataStore {
+        get {
+            let store = TimerDataStore() {}
+            store.openTimer(IntervalTimer(
+                id: UUID(),
+                name: "Test",
+                description: nil,
+                warmUpDuration: 300,
+                lowIntensityDuration: 10,
+                highIntensityDuration: 20,
+                restDuration: 50,
+                cooldownDuration: 300,
+                sets: 4,
+                rounds: 2
+            ))
+            return store
+        }
+    }
     static var previews: some View {
-        ActiveTimerView().environmentObject(TimerDataStore() {})
+        ActiveTimerView().environmentObject(dataStore)
     }
 }

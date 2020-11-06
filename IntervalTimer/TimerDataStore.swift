@@ -183,18 +183,12 @@ class TimerDataStore: ObservableObject {
     }
     
     func loadTimers() {
-        DispatchQueue.global(qos: .background).async {
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "IntervalTimer")
-            do {
-                let fetchedTimers = try self.persistentContainer.viewContext.fetch(fetchRequest) as! [IntervalTimer]
-                DispatchQueue.main.async {
-                    self.timers = .success(fetchedTimers)
-                }
-            } catch {
-                DispatchQueue.main.async {
-                    self.timers = .failure(.failed(error))
-                }
-            }
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "IntervalTimer")
+        do {
+            let fetchedTimers = try self.persistentContainer.viewContext.fetch(fetchRequest) as! [IntervalTimerMO]
+            self.timers = .success(fetchedTimers.map { IntervalTimer.create(fromMO: $0) })
+        } catch {
+            self.timers = .failure(.failed(error))
         }
     }
     
@@ -210,18 +204,11 @@ class TimerDataStore: ObservableObject {
         sets: Int64,
         rounds: Int64
     ) {
-        var timer: IntervalTimer
+        var timer: IntervalTimerMO
         if let uuid = id {
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "IntervalTimer")
-            fetchRequest.predicate = NSPredicate(format: "id = %@", uuid.uuidString)
-            let result = try! persistentContainer.viewContext.fetch(fetchRequest) as! [IntervalTimer]
-            if result.count == 1 {
-                timer = result[0]
-            } else {
-                timer = IntervalTimer.init(entity: NSEntityDescription.entity(forEntityName: "IntervalTimer", in: persistentContainer.viewContext)!, insertInto: persistentContainer.viewContext) as IntervalTimer
-            }
+            timer = loadTimer(byId: uuid)!
         } else {
-            timer = IntervalTimer.init(entity: NSEntityDescription.entity(forEntityName: "IntervalTimer", in: persistentContainer.viewContext)!, insertInto: persistentContainer.viewContext) as IntervalTimer
+            timer = IntervalTimerMO.init(entity: NSEntityDescription.entity(forEntityName: "IntervalTimer", in: persistentContainer.viewContext)!, insertInto: persistentContainer.viewContext) as IntervalTimerMO
         }
         
         timer.id = id ?? UUID()
@@ -242,17 +229,29 @@ class TimerDataStore: ObservableObject {
         loadTimers()
         if let currentState = activeTimer {
             if currentState.timer.id == timer.id {
-                activeTimer = currentState.copy(timer: timer)
+                activeTimer = currentState.copy(timer: IntervalTimer.create(fromMO: timer))
             }
         }
     }
 
     func deleteTimer(at: IndexSet) {
-        let timer = try!  self.timers.get()[at.first!]
+        guard let timer = loadTimer(byId: try! self.timers.get()[at.first!].id!) else {
+            return
+        }
         let viewContext = persistentContainer.viewContext
         viewContext.delete(timer)
         try! viewContext.save()
         loadTimers()
+    }
+    
+    private func loadTimer(byId: UUID) -> IntervalTimerMO? {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "IntervalTimer")
+        fetchRequest.predicate = NSPredicate(format: "id = %@", byId.uuidString)
+        let result = try! persistentContainer.viewContext.fetch(fetchRequest) as! [IntervalTimerMO]
+        if result.count == 1 {
+            return result[0]
+        }
+        return nil
     }
     
     private func loadSound(_ phase: Phase) {

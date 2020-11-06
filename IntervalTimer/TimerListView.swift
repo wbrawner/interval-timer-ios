@@ -29,8 +29,8 @@ struct TimerListView: View {
                                 VStack(alignment: .leading) {
                                     Text(timer.name)
                                         .lineLimit(1)
-                                    if timer.userDescription?.count ?? 0 > 0 {
-                                        Text(timer.userDescription!)
+                                    if timer.description?.count ?? 0 > 0 {
+                                        Text(timer.description!)
                                             .font(.subheadline)
                                             .foregroundColor(.secondary)
                                             .lineLimit(1)

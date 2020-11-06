@@ -162,7 +162,7 @@ struct TimerFormView: View {
             self.title = "New Timer"
         }
         self._name = State(initialValue: timer?.name ?? "")
-        self._description = State(initialValue: timer?.userDescription ?? "")
+        self._description = State(initialValue: timer?.description ?? "")
         self._warmDuration = State(initialValue: timer?.warmUpDuration ?? 300)
         self._lowDuration = State(initialValue: timer?.lowIntensityDuration ?? 30)
         self._highDuration = State(initialValue: timer?.highIntensityDuration ?? 60)

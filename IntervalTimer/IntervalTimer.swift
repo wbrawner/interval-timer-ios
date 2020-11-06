@@ -11,7 +11,20 @@ import CoreData
 import Foundation
 import SwiftUI
 
-class IntervalTimer: NSManagedObject, Identifiable {
+struct IntervalTimer: Identifiable, Equatable {
+    let id: UUID?
+    let name: String
+    let description: String?
+    let warmUpDuration: Int64
+    let lowIntensityDuration: Int64
+    let highIntensityDuration: Int64
+    let restDuration: Int64
+    let cooldownDuration: Int64
+    let sets: Int64
+    let rounds: Int64
+}
+
+class IntervalTimerMO: NSManagedObject, Identifiable {
     @NSManaged var id: UUID?
     @NSManaged var name: String
     @NSManaged var userDescription: String?
@@ -71,6 +84,34 @@ extension IntervalTimer {
         get {
             return warmUpDuration + ((((lowIntensityDuration + highIntensityDuration) * sets) + restDuration) * rounds) + cooldownDuration
         }
+    }
+    
+    func copy(toMO: IntervalTimerMO) {
+        toMO.id = self.id
+        toMO.name = self.name
+        toMO.userDescription = self.description
+        toMO.warmUpDuration = self.warmUpDuration
+        toMO.lowIntensityDuration = self.lowIntensityDuration
+        toMO.highIntensityDuration = self.highIntensityDuration
+        toMO.restDuration = self.restDuration
+        toMO.cooldownDuration = self.cooldownDuration
+        toMO.sets = self.sets
+        toMO.rounds = self.rounds
+    }
+    
+    static func create(fromMO: IntervalTimerMO) -> IntervalTimer {
+        return IntervalTimer(
+            id: fromMO.id,
+            name: fromMO.name,
+            description: fromMO.userDescription,
+            warmUpDuration: fromMO.warmUpDuration,
+            lowIntensityDuration: fromMO.lowIntensityDuration,
+            highIntensityDuration: fromMO.highIntensityDuration,
+            restDuration: fromMO.restDuration,
+            cooldownDuration: fromMO.cooldownDuration,
+            sets: fromMO.sets,
+            rounds: fromMO.rounds
+        )
     }
 }
 
