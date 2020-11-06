@@ -17,6 +17,7 @@ struct ActiveTimerView: View {
             VStack {
                 Spacer()
                 Text(state.phase.rawValue)
+                    .font(.system(size: 30))
                 Text(state.timeRemaining.toDurationString())
                     .font(Font.system(size: 200).monospacedDigit())
                     .lineLimit(1)
@@ -26,13 +27,12 @@ struct ActiveTimerView: View {
                 TimerControlsView(dataStore: self.dataStore, timerRunning: .constant(state.isRunning))
                 Spacer()
                 HStack {
-                    LabeledCounter(label: "Sets", counter: state.currentSet)
+                    LabeledCounter(label: "Set", counter: state.currentSet)
                     Spacer()
                     LabeledCounter(label: "Round", counter: state.currentRound)
-                }
+                }.padding(.bottom)
             }
             .navigationBarTitle("\(state.timer.name)", displayMode: .inline)
-            
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(
                 leading: Button(action: {
@@ -118,9 +118,10 @@ struct LabeledCounter: View {
         VStack {
             Text(label)
                 .multilineTextAlignment(.center)
+                .font(.system(size: 20))
             Text(String(counter))
                 .multilineTextAlignment(.center)
-                .font(Font.title.monospacedDigit())
+                .font(Font.system(size: 40).monospacedDigit())
         }
         .padding()
     }
