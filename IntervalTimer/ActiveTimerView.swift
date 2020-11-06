@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct ActiveTimerView: View {
+    @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var dataStore: TimerDataStore
     @State var isEditing: Bool = false
     
@@ -48,9 +49,10 @@ struct ActiveTimerView: View {
                     label: {
                         Text("Edit")
                     }
-                )
+                ).foregroundColor(.primary)
             )
-            .background(state.backgroundColor)
+            .background(state.phase.backgroundColor(forColorScheme: colorScheme))
+            .foregroundColor(state.phase.textColor(forColorScheme: colorScheme))
             .edgesIgnoringSafeArea(.vertical)
             .animation(.default)
             .sheet(isPresented: $isEditing,
@@ -84,7 +86,6 @@ struct TimerControlsView: View {
                     .scaledToFit()
                     .frame(width: buttonSize, height: buttonSize)
             })
-            .foregroundColor(.primary)
             .padding()
             Button(action: {
                 self.dataStore.toggle()
@@ -94,7 +95,6 @@ struct TimerControlsView: View {
                     .scaledToFit()
                     .frame(width: buttonSize, height: buttonSize)
             })
-            .foregroundColor(.primary)
             .padding()
             Button(action: {
                 self.dataStore.goForward()
@@ -104,7 +104,6 @@ struct TimerControlsView: View {
                     .scaledToFit()
                     .frame(width: buttonSize, height: buttonSize)
             })
-            .foregroundColor(.primary)
             .padding()
         }
     }
@@ -148,5 +147,6 @@ struct ActiveTimerView_Previews: PreviewProvider {
     }
     static var previews: some View {
         ActiveTimerView().environmentObject(dataStore)
+            .environment(\.colorScheme, .dark)
     }
 }

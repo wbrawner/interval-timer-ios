@@ -46,7 +46,15 @@ enum Phase: String {
 }
 
 extension Phase {
-    var backgroundColor: Color {
+    func backgroundColor(forColorScheme: ColorScheme) -> Color {
+        return forColorScheme == .dark ? Color.black : self.color
+    }
+    
+    func textColor(forColorScheme: ColorScheme) -> Color {
+        return forColorScheme == .dark ? self.color : Color.black
+    }
+
+    private var color: Color {
         get {
             switch self {
             case .warmUp:
@@ -123,11 +131,6 @@ struct ActiveTimerState {
     let soundId: Int?
     let phase: Phase
     let isRunning: Bool
-    var backgroundColor: Color {
-        get {
-            return self.phase.backgroundColor
-        }
-    }
 }
 
 extension ActiveTimerState {

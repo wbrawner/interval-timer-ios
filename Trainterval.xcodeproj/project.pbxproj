@@ -23,7 +23,6 @@
 		80F8B6FC254276380024077E /* TimerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F8B6FB254276380024077E /* TimerListView.swift */; };
 		80F8B6FE2542763A0024077E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80F8B6FD2542763A0024077E /* Assets.xcassets */; };
 		80F8B7012542763A0024077E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80F8B7002542763A0024077E /* Preview Assets.xcassets */; };
-		80F8B7042542763A0024077E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80F8B7022542763A0024077E /* LaunchScreen.storyboard */; };
 		80F8B70F2542763B0024077E /* IntervalTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F8B70E2542763B0024077E /* IntervalTimerTests.swift */; };
 		80F8B71A2542763B0024077E /* IntervalTimerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F8B7192542763B0024077E /* IntervalTimerUITests.swift */; };
 		80F8B728254276E70024077E /* IntervalTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F8B727254276E70024077E /* IntervalTimer.swift */; };
@@ -65,7 +64,6 @@
 		80F8B6FB254276380024077E /* TimerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerListView.swift; sourceTree = "<group>"; };
 		80F8B6FD2542763A0024077E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		80F8B7002542763A0024077E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		80F8B7032542763A0024077E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		80F8B7052542763B0024077E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		80F8B70A2542763B0024077E /* IntervalTimerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntervalTimerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		80F8B70E2542763B0024077E /* IntervalTimerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalTimerTests.swift; sourceTree = "<group>"; };
@@ -142,7 +140,6 @@
 				80F8B6F6254276380024077E /* SceneDelegate.swift */,
 				80F8B6FB254276380024077E /* TimerListView.swift */,
 				80F8B6FD2542763A0024077E /* Assets.xcassets */,
-				80F8B7022542763A0024077E /* LaunchScreen.storyboard */,
 				80F8B7052542763B0024077E /* Info.plist */,
 				80F8B6F8254276380024077E /* IntervalTimer.xcdatamodeld */,
 				80F8B6FF2542763A0024077E /* Preview Content */,
@@ -262,7 +259,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 80F8B6EC254276380024077E /* Build configuration list for PBXProject "IntervalTimer" */;
+			buildConfigurationList = 80F8B6EC254276380024077E /* Build configuration list for PBXProject "Trainterval" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -292,7 +289,6 @@
 				80E0FEE3254F425200A67912 /* Warm-Up.mp3 in Resources */,
 				80E0FEE6254F425200A67912 /* Cooldown.mp3 in Resources */,
 				80E0FEE4254F425200A67912 /* High Intensity.mp3 in Resources */,
-				80F8B7042542763A0024077E /* LaunchScreen.storyboard in Resources */,
 				80F8B7012542763A0024077E /* Preview Assets.xcassets in Resources */,
 				80F8B6FE2542763A0024077E /* Assets.xcassets in Resources */,
 			);
@@ -363,17 +359,6 @@
 			targetProxy = 80F8B7162542763B0024077E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		80F8B7022542763A0024077E /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				80F8B7032542763A0024077E /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		80F8B71C2542763B0024077E /* Debug */ = {
@@ -619,7 +604,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		80F8B6EC254276380024077E /* Build configuration list for PBXProject "IntervalTimer" */ = {
+		80F8B6EC254276380024077E /* Build configuration list for PBXProject "Trainterval" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				80F8B71C2542763B0024077E /* Debug */,
