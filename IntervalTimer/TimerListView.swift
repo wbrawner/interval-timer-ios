@@ -68,6 +68,7 @@ struct TimerListView: View {
                     self.isEditing = true
                 }, label: { Image(systemName: "plus").padding() } ))
         }
+        .navigationViewStyle(StackNavigationViewStyle())
         .sheet(isPresented: $isEditing,
                onDismiss: { self.isEditing = false },
                content: { TimerFormView()})

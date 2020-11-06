@@ -9,52 +9,59 @@
 import SwiftUI
 
 struct ActiveTimerView: View {
+    @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var dataStore: TimerDataStore
     @State var isEditing: Bool = false
     
     var body: some View {
         if let state = dataStore.activeTimer {
-            VStack {
-                Spacer()
-                Text(state.phase.rawValue)
-                    .font(.system(size: 30))
-                Text(state.timeRemaining.toDurationString())
-                    .font(Font.system(size: 200).monospacedDigit())
-                    .lineLimit(1)
-                    .scaledToFit()
-                    .minimumScaleFactor(0.1)
-                    .padding()
-                TimerControlsView(dataStore: self.dataStore, timerRunning: .constant(state.isRunning))
-                Spacer()
-                HStack {
-                    LabeledCounter(label: "Set", counter: state.currentSet)
+            GeometryReader { geometry in
+                VStack {
                     Spacer()
-                    LabeledCounter(label: "Round", counter: state.currentRound)
-                }.padding(.bottom)
-            }
-            .navigationBarTitle("\(state.timer.name)", displayMode: .inline)
-            .navigationBarBackButtonHidden(true)
-            .navigationBarItems(
-                leading: Button(action: {
-                    // TODO: Confirm before exiting if the timer isn't complete
-                    self.dataStore.closeTimer()
-                }, label: {
-                    Image(systemName: "xmark")
-                }).foregroundColor(.primary),
-                trailing: Button(
-                    action: {
-                        self.isEditing = true
-                    },
-                    label: {
-                        Text("Edit")
+                    Text(state.phase.rawValue)
+                        .font(.system(size: 30))
+                    Text(state.timeRemaining.toDurationString())
+                        .font(Font.system(size: 200).monospacedDigit())
+                        .lineLimit(1)
+                        .scaledToFit()
+                        .minimumScaleFactor(0.1)
+                        .padding(.horizontal)
+                    TimerControlsView(dataStore: self.dataStore, state: state)
+                    if verticalSizeClass != .compact {
+                        Spacer()
+                        HStack {
+                            LabeledCounter(label: "Set", counter: state.currentSet)
+                            Spacer()
+                            LabeledCounter(label: "Round", counter: state.currentRound)
+                        }.padding(.horizontal) 
                     }
-                ).foregroundColor(.primary)
-            )
-            .background(state.phase.backgroundColor(forColorScheme: colorScheme))
-            .foregroundColor(state.phase.textColor(forColorScheme: colorScheme))
-            .edgesIgnoringSafeArea(.vertical)
-            .animation(.default)
+                }
+                .navigationBarTitle("\(state.timer.name)", displayMode: .inline)
+                .navigationBarBackButtonHidden(true)
+                .navigationBarItems(
+                    leading: Button(action: {
+                        // TODO: Confirm before exiting if the timer isn't complete
+                        self.dataStore.closeTimer()
+                    }, label: {
+                        Image(systemName: "xmark")
+                    }).foregroundColor(.primary),
+                    trailing: Button(
+                        action: {
+                            self.isEditing = true
+                        },
+                        label: {
+                            Text("Edit")
+                        }
+                    ).foregroundColor(.primary)
+                )
+                .padding(geometry.safeAreaInsets)
+                .background(state.phase.backgroundColor(forColorScheme: colorScheme))
+                .foregroundColor(state.phase.textColor(forColorScheme: colorScheme))
+                .animation(.default)
+                .edgesIgnoringSafeArea(.all)
+
+            }
             .sheet(isPresented: $isEditing,
                    onDismiss: { self.isEditing = false },
                    content: { TimerFormView(state.timer)})
@@ -63,11 +70,12 @@ struct ActiveTimerView: View {
 }
 
 struct TimerControlsView: View {
+    @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
     let dataStore: TimerDataStore
-    @Binding var timerRunning: Bool
+    let state: ActiveTimerState
     private var toggleButtonImage: String {
         get {
-            if self.timerRunning {
+            if self.state.isRunning {
                 return "pause.fill"
             } else {
                 return "play.fill"
@@ -78,6 +86,10 @@ struct TimerControlsView: View {
     
     var body: some View {
         HStack {
+            if verticalSizeClass == .compact {
+                LabeledCounter(label: "Set", counter: state.currentSet)
+                Spacer()
+            }
             Button(action: {
                 self.dataStore.goBack()
             }, label: {
@@ -105,6 +117,10 @@ struct TimerControlsView: View {
                     .frame(width: buttonSize, height: buttonSize)
             })
             .padding()
+            if verticalSizeClass == .compact {
+                Spacer()
+                LabeledCounter(label: "Round", counter: state.currentRound)
+            }
         }
     }
 }
@@ -122,7 +138,6 @@ struct LabeledCounter: View {
                 .multilineTextAlignment(.center)
                 .font(Font.system(size: 40).monospacedDigit())
         }
-        .padding()
     }
 }
 
