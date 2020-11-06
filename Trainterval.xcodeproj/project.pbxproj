@@ -57,7 +57,7 @@
 		80E0FEDF254F425100A67912 /* High Intensity.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "High Intensity.mp3"; sourceTree = "<group>"; };
 		80E0FEE0254F425100A67912 /* Low Intensity.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Low Intensity.mp3"; sourceTree = "<group>"; };
 		80E0FEE1254F425100A67912 /* Cooldown.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Cooldown.mp3; sourceTree = "<group>"; };
-		80F8B6F1254276380024077E /* IntervalTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IntervalTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		80F8B6F1254276380024077E /* Trainterval.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trainterval.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80F8B6F4254276380024077E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80F8B6F6254276380024077E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		80F8B6F9254276380024077E /* IntervalTimer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = IntervalTimer.xcdatamodel; sourceTree = "<group>"; };
@@ -65,10 +65,10 @@
 		80F8B6FD2542763A0024077E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		80F8B7002542763A0024077E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		80F8B7052542763B0024077E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		80F8B70A2542763B0024077E /* IntervalTimerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntervalTimerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		80F8B70A2542763B0024077E /* TraintervalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TraintervalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		80F8B70E2542763B0024077E /* IntervalTimerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalTimerTests.swift; sourceTree = "<group>"; };
 		80F8B7102542763B0024077E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		80F8B7152542763B0024077E /* IntervalTimerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntervalTimerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		80F8B7152542763B0024077E /* TraintervalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TraintervalUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		80F8B7192542763B0024077E /* IntervalTimerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalTimerUITests.swift; sourceTree = "<group>"; };
 		80F8B71B2542763B0024077E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		80F8B727254276E70024077E /* IntervalTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalTimer.swift; sourceTree = "<group>"; };
@@ -125,9 +125,9 @@
 		80F8B6F2254276380024077E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				80F8B6F1254276380024077E /* IntervalTimer.app */,
-				80F8B70A2542763B0024077E /* IntervalTimerTests.xctest */,
-				80F8B7152542763B0024077E /* IntervalTimerUITests.xctest */,
+				80F8B6F1254276380024077E /* Trainterval.app */,
+				80F8B70A2542763B0024077E /* TraintervalTests.xctest */,
+				80F8B7152542763B0024077E /* TraintervalUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -183,9 +183,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		80F8B6F0254276380024077E /* IntervalTimer */ = {
+		80F8B6F0254276380024077E /* Trainterval */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 80F8B71E2542763B0024077E /* Build configuration list for PBXNativeTarget "IntervalTimer" */;
+			buildConfigurationList = 80F8B71E2542763B0024077E /* Build configuration list for PBXNativeTarget "Trainterval" */;
 			buildPhases = (
 				80F8B6ED254276380024077E /* Sources */,
 				80F8B6EE254276380024077E /* Frameworks */,
@@ -195,14 +195,14 @@
 			);
 			dependencies = (
 			);
-			name = IntervalTimer;
+			name = Trainterval;
 			productName = IntervalTimer;
-			productReference = 80F8B6F1254276380024077E /* IntervalTimer.app */;
+			productReference = 80F8B6F1254276380024077E /* Trainterval.app */;
 			productType = "com.apple.product-type.application";
 		};
-		80F8B7092542763B0024077E /* IntervalTimerTests */ = {
+		80F8B7092542763B0024077E /* TraintervalTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 80F8B7212542763B0024077E /* Build configuration list for PBXNativeTarget "IntervalTimerTests" */;
+			buildConfigurationList = 80F8B7212542763B0024077E /* Build configuration list for PBXNativeTarget "TraintervalTests" */;
 			buildPhases = (
 				80F8B7062542763B0024077E /* Sources */,
 				80F8B7072542763B0024077E /* Frameworks */,
@@ -213,14 +213,14 @@
 			dependencies = (
 				80F8B70C2542763B0024077E /* PBXTargetDependency */,
 			);
-			name = IntervalTimerTests;
+			name = TraintervalTests;
 			productName = IntervalTimerTests;
-			productReference = 80F8B70A2542763B0024077E /* IntervalTimerTests.xctest */;
+			productReference = 80F8B70A2542763B0024077E /* TraintervalTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		80F8B7142542763B0024077E /* IntervalTimerUITests */ = {
+		80F8B7142542763B0024077E /* TraintervalUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 80F8B7242542763B0024077E /* Build configuration list for PBXNativeTarget "IntervalTimerUITests" */;
+			buildConfigurationList = 80F8B7242542763B0024077E /* Build configuration list for PBXNativeTarget "TraintervalUITests" */;
 			buildPhases = (
 				80F8B7112542763B0024077E /* Sources */,
 				80F8B7122542763B0024077E /* Frameworks */,
@@ -231,9 +231,9 @@
 			dependencies = (
 				80F8B7172542763B0024077E /* PBXTargetDependency */,
 			);
-			name = IntervalTimerUITests;
+			name = TraintervalUITests;
 			productName = IntervalTimerUITests;
-			productReference = 80F8B7152542763B0024077E /* IntervalTimerUITests.xctest */;
+			productReference = 80F8B7152542763B0024077E /* TraintervalUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -272,9 +272,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				80F8B6F0254276380024077E /* IntervalTimer */,
-				80F8B7092542763B0024077E /* IntervalTimerTests */,
-				80F8B7142542763B0024077E /* IntervalTimerUITests */,
+				80F8B6F0254276380024077E /* Trainterval */,
+				80F8B7092542763B0024077E /* TraintervalTests */,
+				80F8B7142542763B0024077E /* TraintervalUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -350,12 +350,12 @@
 /* Begin PBXTargetDependency section */
 		80F8B70C2542763B0024077E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 80F8B6F0254276380024077E /* IntervalTimer */;
+			target = 80F8B6F0254276380024077E /* Trainterval */;
 			targetProxy = 80F8B70B2542763B0024077E /* PBXContainerItemProxy */;
 		};
 		80F8B7172542763B0024077E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 80F8B6F0254276380024077E /* IntervalTimer */;
+			target = 80F8B6F0254276380024077E /* Trainterval */;
 			targetProxy = 80F8B7162542763B0024077E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -535,7 +535,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IntervalTimer.app/IntervalTimer";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Trainterval.app/Trainterval";
 			};
 			name = Debug;
 		};
@@ -557,7 +557,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IntervalTimer.app/IntervalTimer";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Trainterval.app/Trainterval";
 			};
 			name = Release;
 		};
@@ -613,7 +613,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		80F8B71E2542763B0024077E /* Build configuration list for PBXNativeTarget "IntervalTimer" */ = {
+		80F8B71E2542763B0024077E /* Build configuration list for PBXNativeTarget "Trainterval" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				80F8B71F2542763B0024077E /* Debug */,
@@ -622,7 +622,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		80F8B7212542763B0024077E /* Build configuration list for PBXNativeTarget "IntervalTimerTests" */ = {
+		80F8B7212542763B0024077E /* Build configuration list for PBXNativeTarget "TraintervalTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				80F8B7222542763B0024077E /* Debug */,
@@ -631,7 +631,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		80F8B7242542763B0024077E /* Build configuration list for PBXNativeTarget "IntervalTimerUITests" */ = {
+		80F8B7242542763B0024077E /* Build configuration list for PBXNativeTarget "TraintervalUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				80F8B7252542763B0024077E /* Debug */,
