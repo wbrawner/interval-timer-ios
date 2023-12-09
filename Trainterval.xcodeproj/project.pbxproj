@@ -52,6 +52,7 @@
 		80465F852544774700710741 /* CollapsibleFormRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsibleFormRowView.swift; sourceTree = "<group>"; };
 		80465F8725447ACE00710741 /* DurationPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationPicker.swift; sourceTree = "<group>"; };
 		80465F892547A74700710741 /* ActiveTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveTimerView.swift; sourceTree = "<group>"; };
+		80A341B92905DA0F0065F79E /* IntervalTimer.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = IntervalTimer.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		80E0FEDD254F425100A67912 /* Rest.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Rest.mp3; sourceTree = "<group>"; };
 		80E0FEDE254F425100A67912 /* Warm-Up.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Warm-Up.mp3"; sourceTree = "<group>"; };
 		80E0FEDF254F425100A67912 /* High Intensity.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "High Intensity.mp3"; sourceTree = "<group>"; };
@@ -150,6 +151,7 @@
 				80465F852544774700710741 /* CollapsibleFormRowView.swift */,
 				80465F8725447ACE00710741 /* DurationPicker.swift */,
 				80465F892547A74700710741 /* ActiveTimerView.swift */,
+				80A341B92905DA0F0065F79E /* IntervalTimer.playground */,
 			);
 			path = IntervalTimer;
 			sourceTree = "<group>";
@@ -482,14 +484,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"IntervalTimer/Preview Content\"";
 				DEVELOPMENT_TEAM = 9Z6DE6KNJ9;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = IntervalTimer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wbrawner.IntervalTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -502,14 +507,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"IntervalTimer/Preview Content\"";
 				DEVELOPMENT_TEAM = 9Z6DE6KNJ9;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = IntervalTimer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wbrawner.IntervalTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
